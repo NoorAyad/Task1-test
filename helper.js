@@ -30,13 +30,13 @@ const getUserByCompanyName = (list, companyName) => {
 
 const getUsersByCity = (list, cit) => {
   //TODO: get users that live in this city
-  console.log(list.find(el => el.city == cit));
+  console.log(list.find(el => el.address.city == cit));
 };
 
 const getStreet = (list, userID) => {
   //TODO: get street name by userID
   let st =list.find(el => el.id == userID);
-  console.log(st.street);
+  console.log(st.address.street);
 };
 
 const addNewUser = (list, userObject) => {
@@ -48,12 +48,13 @@ const addNewUser = (list, userObject) => {
 
 const updateUser = (list, userID) => {
   //TODO: update email when id === userID
-  let Updlist = list;
-  let user = Updlist.find(el => el.id === userID);
+ 
+  let user = list.find(el => el.id === userID);
   user.email = GenerateEmail();
-  let userindex = Updlist.findIndex(el => el == userID);
+  let userindex = list.findIndex(el => el == userID);
+  let Updlist=list;
   Updlist[userindex] = user;
-  return Updlist;
+ console.log(Updlist);
 
 
 };
